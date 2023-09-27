@@ -47,3 +47,4 @@ if (!scriptVersion) {
 }
 
 Run scriptDir "/helper.exe"
+
