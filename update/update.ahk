@@ -1,4 +1,5 @@
 #Include %A_ScriptDir%\lib\github.ahk
+#Include %A_ScriptDir%\lib\Class_CNG.ahk
 
 ; Проверяет наличие папки в которой будет сохранятся конфигурация скрипта
 ; А так же будет сохранять в себе последнюю версию
@@ -11,6 +12,29 @@ if not DirExist(scriptDir)
 configFile := scriptDir "/config.ini"
 if not FileExist(configFile)
   FileAppend "", configFile
+
+; Проверяем лицензию на валидность
+; Генерируем уникальную последовательность
+cryptStr := A_UserName A_Is64bitOS A_Language A_ComputerName A_Desktop
+cryptStr := cryptStr A_WinDir A_OSVersion A_Temp
+
+; Шифруем ключ
+cryptStrEncrypted := Hash.String("SHA1", cryptStr)
+
+; Получаем список ключей у которых есть доступ и проверяем наличие нашего
+winHttp := ComObject("WinHttp.WinHttpRequest.5.1")
+winHttp.Open("GET", "https://raw.githubusercontent.com/awbait/next-helper/main/users")
+winHttp.Send()
+winHttp.WaitForResponse()
+
+if not InStr(winHttp.ResponseText, cryptStrEncrypted) {
+  ; Лицензия не найдена
+  ; Уведомляем пользователя, что лицензия не активирована.
+  A_Clipboard := cryptStrEncrypted
+  MsgBox ("Добро пожаловать! Ваш уникальный ключ был скопирован.`n"
+          "Чтобы получить доступ к скриптам, отправьте его разработчику."), "HelperNextRP"
+  ExitApp
+}
 
 ; Устанавливаем переменные репозитория GitHub
 userRepo := "awbait"
@@ -47,4 +71,3 @@ if (!scriptVersion) {
 }
 
 Run scriptDir "/helper.exe"
-
