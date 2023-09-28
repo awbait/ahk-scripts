@@ -27,7 +27,9 @@ winHttp.Open("GET", "https://raw.githubusercontent.com/awbait/next-helper/main/u
 winHttp.Send()
 winHttp.WaitForResponse()
 
-if not InStr(winHttp.ResponseText, cryptStrEncrypted) {
+lic := InStr(winHttp.ResponseText, cryptStrEncrypted)
+
+if lic > 0 {
   ; Лицензия не найдена
   ; Уведомляем пользователя, что лицензия не активирована.
   A_Clipboard := cryptStrEncrypted
