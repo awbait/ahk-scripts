@@ -28,8 +28,7 @@ winHttp.Send()
 winHttp.WaitForResponse()
 
 lic := InStr(winHttp.ResponseText, cryptStrEncrypted)
-
-if lic > 0 {
+if lic <= 0 {
   ; Лицензия не найдена
   ; Уведомляем пользователя, что лицензия не активирована.
   A_Clipboard := cryptStrEncrypted
