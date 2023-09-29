@@ -1,6 +1,15 @@
 #Include %A_ScriptDir%\lib\github.ahk
 #Include %A_ScriptDir%\lib\Class_CNG.ahk
 
+if not A_IsAdmin {
+  try {
+    Run "*RunAs " A_ScriptFullPath
+  } catch Error as e {
+    MsgBox "Пожалуйста, запустите от имени администратора."
+    ExitApp
+  }
+}
+
 ; Проверяет наличие папки в которой будет сохранятся конфигурация скрипта
 ; А так же будет сохранять в себе последнюю версию
 scriptDir := A_AppData "/HelperNextRP"
@@ -71,4 +80,4 @@ if (!scriptVersion) {
   }
 }
 
-Run scriptDir "/helper.exe"
+Run "*RunAs " scriptDir "/helper.exe"
