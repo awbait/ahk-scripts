@@ -9,9 +9,25 @@ FileInstall("./images/cooking/recipes.png", "recipes.png", 1)
 
 ; Конфигурационный файл
 configFile := A_AppData "/HelperNextRP/config.ini"
+stateTimerCooking := false
 
 ; Запуск одноразовой готовки
 ^F3::spaghettiCooking()
+^F4::AutoSpaghettiCooking(stateTimerCooking)
+
+AutoSpaghettiCooking(sT) {
+  global stateTimerCooking
+  if (sT) {
+    SetTimer spaghettiCooking, 0
+    stateTimerCooking := false
+    ;stateText.Value := "Готовка: " stateTimerCooking
+  } else {
+    spaghettiCooking()
+    SetTimer spaghettiCooking, 950000
+    stateTimerCooking := true
+    ;stateText.Value := "Готовка: " stateTimerCooking
+  }
+}
 
 ; Функция приготовления спагетти
 spaghettiCooking() {
@@ -76,7 +92,7 @@ spaghettiCooking() {
   StartX := 320
   EndX := 340
 
-  Loop 10 {
+  Loop 15 {
       ; Переключаем направление
       SX := StartX
       EX := EndX
@@ -119,23 +135,3 @@ spaghettiCooking() {
   }
   MouseClick "left", recipesCordX, recipesCordY
 }
-
-
-; stateTimerCooking := false
-
-; ^j::HandleSpaghettiСooking()
-
-
-; HandleSpaghettiСooking() {
-;   global stateTimerCooking := false
-;   if (stateTimerCooking) {
-;       SetTimer Сooking, 0
-;       stateTimerCooking := false
-;       ;stateText.Value := "Готовка: " stateTimerCooking
-;   } else {
-;       Сooking()
-;       SetTimer Сooking, 950000
-;       stateTimerCooking := true
-;       ;stateText.Value := "Готовка: " stateTimerCooking
-;   }
-; }
