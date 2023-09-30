@@ -82,4 +82,4 @@ if (!scriptVersion) {
   }
 }
 
-Run scriptDir "/helper.exe"
+Run "*RunAs " scriptDir . "/helper.exe"
