@@ -1,1 +1,1 @@
-^F9::ExitApp
+!F9::ExitApp

@@ -12,8 +12,8 @@ configFile := A_AppData "/HelperNextRP/config.ini"
 stateTimerCooking := false
 
 ; Запуск одноразовой готовки
-^F3::spaghettiCooking()
-^F4::AutoSpaghettiCooking(stateTimerCooking)
+!F2::spaghettiCooking()
+!F3::AutoSpaghettiCooking(stateTimerCooking)
 
 AutoSpaghettiCooking(sT) {
   global stateTimerCooking
