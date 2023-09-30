@@ -6,7 +6,7 @@ fishingHandle() {
   global fishingEnabled
   
   if (fishingEnabled := !fishingEnabled) {
-    SetTimer fishing, 1
+    SetTimer fishing, 100
   } else {
     SetTimer fishing, 0
   }

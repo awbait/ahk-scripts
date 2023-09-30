@@ -1,5 +1,6 @@
 ;@Ahk2Exe-Base C:\Program Files\AutoHotkey\v2\AutoHotkey64.exe
 
+#SingleInstance Force
 #Include %A_ScriptDir%\lib\github.ahk
 #Include %A_ScriptDir%\lib\Class_CNG.ahk
 
@@ -82,4 +83,4 @@ if (!scriptVersion) {
   }
 }
 
-Run "*RunAs " scriptDir . "/helper.exe"
+Run scriptDir "/helper.exe"

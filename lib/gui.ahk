@@ -9,7 +9,7 @@ stateGui.Add("Text", "w900 cffffff", "[ALT+F4] Рыбалка")
 stateGui.Add("Text", "w900 cffffff", "[ALT+F9] Закрыть скрипт")
 
 ; Указываем версию
-stateGui.Add("Text", "w900 cffffff", "ver 0.0.8")
+stateGui.Add("Text", "w900 cffffff", "ver 0.0.9")
 
 stateGui.Opt("+AlwaysOnTop -Caption +ToolWindow +E0x80020")
 stateGui.BackColor := "232323"
@@ -26,7 +26,7 @@ hideGui := false
 showGui(myGui) {
   global hideGui
   if (hideGui) {
-    myGui.Show("w170 h110 x150 y150")
+    myGui.Show("w170 h170 x150 y150")
     hideGui := false
   } else {
     myGui.Hide()
