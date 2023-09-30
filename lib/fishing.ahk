@@ -1,7 +1,6 @@
-
 fishingEnabled := false
 
-F1::fishingHandle()
+!F4::fishingHandle()
 
 fishingHandle() {
   global fishingEnabled
