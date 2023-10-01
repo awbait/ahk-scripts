@@ -29,13 +29,15 @@ AutoSpaghettiCooking(sT) {
   global stateTimerCooking
   if (sT) {
     SetTimer spaghettiCooking, 0
+    SetTimer zakupka, 0
     stateTimerCooking := false
-    ;stateText.Value := "Готовка: " stateTimerCooking
   } else {
     spaghettiCooking()
-    SetTimer spaghettiCooking, 950000
+    Sleep 10000
+    zakupka()
+    SetTimer spaghettiCooking, 16 * 60000
+    SetTimer zakupka, 41 * 60000
     stateTimerCooking := true
-    ;stateText.Value := "Готовка: " stateTimerCooking
   }
 }
 
@@ -211,6 +213,7 @@ zakupka() {
   }
   loop 3 {
     MouseClick "left", zakazCarrotCordX, zakazCarrotCordY
+    Sleep 1
   }
 
   Sleep sleepTime
@@ -230,6 +233,7 @@ zakupka() {
   }
   loop 3 {
     MouseClick "left", zakazOnionCordX, zakazOnionCordY
+    Sleep 1
   }
 
   Sleep sleepTime
@@ -249,6 +253,7 @@ zakupka() {
   }
   loop 3 {
     MouseClick "left", zakazSpaghettiCordX, zakazSpaghettiCordY
+    Sleep 1
   }
 
   Sleep sleepTime
@@ -268,6 +273,7 @@ zakupka() {
   }
   loop 3 {
     MouseClick "left", zakazCheeseCordX, zakazCheeseCordY
+    Sleep 1
   }
 
   Sleep sleepTime
@@ -287,6 +293,7 @@ zakupka() {
   }
   loop 3 {
     MouseClick "left", zakazCreamCordX, zakazCreamCordY
+    Sleep 1
   }
 
   Sleep sleepTime

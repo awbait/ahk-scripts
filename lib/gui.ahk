@@ -5,12 +5,12 @@ stateGui.SetFont("s8")
 stateGui.Add("Text", "w900 cffffff", "[ALT+F1] Показать/Скрыть")
 stateGui.Add("Text", "w900 cffffff", "[ALT+F2] Приготовить")
 stateGui.Add("Text", "w900 cffffff", "[ALT+F3] АвтоГотовка")
-stateGui.Add("Text", "w900 cffffff", "[ALT+F4] Рыбалка")
-stateGui.Add("Text", "w900 cffffff", "[ALT+F5] Заказ")
+stateGui.Add("Text", "w900 cffffff", "[ALT+F4] Заказ продуктов")
+stateGui.Add("Text", "w900 cffffff", "[ALT+F5] Рыбалка")
 stateGui.Add("Text", "w900 cffffff", "[ALT+F9] Закрыть скрипт")
 
 ; Указываем версию
-stateGui.Add("Text", "w900 cffffff", "ver 0.0.9")
+stateGui.Add("Text", "w900 cffffff", "ver 0.0.11")
 
 stateGui.Opt("+AlwaysOnTop -Caption +ToolWindow +E0x80020")
 stateGui.BackColor := "232323"
