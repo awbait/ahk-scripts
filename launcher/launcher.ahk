@@ -19,6 +19,10 @@ scriptDir := A_AppData "/HelperNextRP"
 if not DirExist(scriptDir)
   DirCreate scriptDir
 
+scriptHTMLDir := A_AppData "/HelperNextRP/html"
+if not DirExist(scriptHTMLDir)
+  DirCreate scriptHTMLDir
+
 ; Проверяет наличие файла конфигурации
 ; Если файл отсутствует - создает его
 configFile := scriptDir "/config.ini"
