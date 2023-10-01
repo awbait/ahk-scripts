@@ -6,8 +6,10 @@ fishingHandle() {
   global fishingEnabled
   
   if (fishingEnabled := !fishingEnabled) {
-    SetTimer fishing, 100
+    BlockInput "MouseMove"
+    SetTimer fishing, 300
   } else {
+    BlockInput "MouseMoveOff"
     SetTimer fishing, 0
   }
   return

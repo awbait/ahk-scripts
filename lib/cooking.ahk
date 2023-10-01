@@ -6,6 +6,15 @@ FileInstall("./images/cooking/prigotovlenie.png", "prigotovlenie.png", 1)
 FileInstall("./images/cooking/spaghetti_fanicini.png", "spaghetti_fanicini.png", 1)
 FileInstall("./images/cooking/button_cook_idle.png", "button_cook_idle.png", 1)
 FileInstall("./images/cooking/recipes.png", "recipes.png", 1)
+; Zakaz
+FileInstall("./images/cooking/zakaz.png", "zakaz.png", 1)
+FileInstall("./images/cooking/scroll.png", "scroll.png", 1)
+FileInstall("./images/cooking/carrot.png", "carrot.png", 1)
+FileInstall("./images/cooking/onion.png", "onion.png", 1)
+FileInstall("./images/cooking/spaghetti.png", "spaghetti.png", 1)
+FileInstall("./images/cooking/cheese.png", "cheese.png", 1)
+FileInstall("./images/cooking/cream.png", "cream.png", 1)
+FileInstall("./images/cooking/buy.png", "buy.png", 1)
 
 ; Конфигурационный файл
 configFile := A_AppData "/HelperNextRP/config.ini"
@@ -14,6 +23,7 @@ stateTimerCooking := false
 ; Запуск одноразовой готовки
 !F2::spaghettiCooking()
 !F3::AutoSpaghettiCooking(stateTimerCooking)
+!F4::zakupka()
 
 AutoSpaghettiCooking(sT) {
   global stateTimerCooking
@@ -117,6 +127,179 @@ spaghettiCooking() {
 
   ; 1 раз жмем ЛКМ
   MouseClick "left"
+
+  Sleep sleepTime
+
+  ; Возвращаемся на список рецептов
+  recipesCordX := IniRead(configFile, "cooking", "RecipesX", false)
+  recipesCordY := IniRead(configFile, "cooking", "RecipesY", false)
+  if (!recipesCordX) {
+    recipes := 0
+    while !recipes {
+      recipes := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "recipes.png")
+    }
+    recipesCordX := imgX + (172 / 2)
+    recipesCordY := imgY + (29 / 2)
+    IniWrite recipesCordX, configFile, "cooking", "RecipesX"
+    IniWrite recipesCordY, configFile, "cooking", "RecipesY"
+  }
+  MouseClick "left", recipesCordX, recipesCordY
+}
+
+zakupka() {
+  sleepTime := 500
+
+  ; Кнопка "Заказ"
+  zakazCordX := IniRead(configFile, "cooking", "ZakazX", false)
+  zakazCordY := IniRead(configFile, "cooking", "ZakazY", false)
+  if (!zakazCordX) {
+    ; Предполагаем, что запуск первый раз и устанавливаем задержку чуть больше
+    sleepTime := 700
+
+    zakaz := 0
+    while !zakaz {
+      zakaz := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "zakaz.png")
+    }
+    zakazCordX := imgX + (152 / 2)
+    zakazCordY := imgY + (24 / 2)
+    IniWrite zakazCordX, configFile, "cooking", "ZakazX"
+    IniWrite zakazCordY, configFile, "cooking", "ZakazY"
+  }
+  MouseClick "left", zakazCordX, zakazCordY
+
+  Sleep sleepTime
+
+  ; Ищем координаты скролла
+  zakazScrollCordX := IniRead(configFile, "cooking", "ZakazScrollX", false)
+  zakazScrollCordY := IniRead(configFile, "cooking", "ZakazScrollY", false)
+  if (!zakazScrollCordX) {
+    scroll := 0
+    while !scroll {
+      scroll := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "scroll.png")
+    }
+  }
+  zakazScrollCordX := imgX + (16 / 2)
+  zakazScrollCordY := imgY + (24 / 2)
+  zakazScrollCordYEnd := zakazScrollCordY + 254
+  ; Зажимаем ЛКМ кнопку на скролле и скроллим вниз
+  Sleep 1
+  SendInput "{Click " zakazScrollCordX " " zakazScrollCordY " Down}"
+  Sleep 1
+  SendInput "{Click " zakazScrollCordX " " zakazScrollCordYEnd " Up}"
+  Sleep 1
+  
+  Sleep sleepTime
+
+  ; Прожимаем кнопки закупки продукции по 3 раза
+  ; Морковка
+  zakazCarrotCordX := IniRead(configFile, "cooking", "ZakazCarrotX", false)
+  zakazCarrotCordY := IniRead(configFile, "cooking", "ZakazCarrotY", false)
+  if (!zakazCarrotCordX) {
+    carrot := 0
+    while !carrot {
+      carrot := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "carrot.png")
+    }
+    zakazCarrotCordX := imgX + 900
+    zakazCarrotCordY := imgY + (38 / 2)
+    IniWrite zakazCarrotCordX, configFile, "cooking", "ZakazCarrotX"
+    IniWrite zakazCarrotCordY, configFile, "cooking", "ZakazCarrotY"
+  }
+  loop 3 {
+    MouseClick "left", zakazCarrotCordX, zakazCarrotCordY
+  }
+
+  Sleep sleepTime
+
+  ; Лук
+  zakazOnionCordX := IniRead(configFile, "cooking", "ZakazOnionX", false)
+  zakazOnionCordY := IniRead(configFile, "cooking", "ZakazOnionY", false)
+  if (!zakazOnionCordX) {
+    onion := 0
+    while !onion {
+      onion := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "onion.png")
+    }
+    zakazOnionCordX := imgX + 900
+    zakazOnionCordY := imgY + (38 / 2)
+    IniWrite zakazOnionCordX, configFile, "cooking", "ZakazOnionX"
+    IniWrite zakazOnionCordY, configFile, "cooking", "ZakazOnionY"
+  }
+  loop 3 {
+    MouseClick "left", zakazOnionCordX, zakazOnionCordY
+  }
+
+  Sleep sleepTime
+
+  ; Спагетти
+  zakazSpaghettiCordX := IniRead(configFile, "cooking", "ZakazSpaghettiX", false)
+  zakazSpaghettiCordY := IniRead(configFile, "cooking", "ZakazSpaghettiY", false)
+  if (!zakazSpaghettiCordX) {
+    spaghetti := 0
+    while !spaghetti {
+      spaghetti := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "spaghetti.png")
+    }
+    zakazSpaghettiCordX := imgX + 900
+    zakazSpaghettiCordY := imgY + (38 / 2)
+    IniWrite zakazSpaghettiCordX, configFile, "cooking", "ZakazSpaghettiX"
+    IniWrite zakazSpaghettiCordY, configFile, "cooking", "ZakazSpaghettiY"
+  }
+  loop 3 {
+    MouseClick "left", zakazSpaghettiCordX, zakazSpaghettiCordY
+  }
+
+  Sleep sleepTime
+
+  ; Сыр
+  zakazCheeseCordX := IniRead(configFile, "cooking", "ZakazCheeseX", false)
+  zakazCheeseCordY := IniRead(configFile, "cooking", "ZakazCheeseY", false)
+  if (!zakazCheeseCordX) {
+    cheese := 0
+    while !cheese {
+      cheese := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "cheese.png")
+    }
+    zakazCheeseCordX := imgX + 900
+    zakazCheeseCordY := imgY + (38 / 2)
+    IniWrite zakazCheeseCordX, configFile, "cooking", "ZakazCheeseX"
+    IniWrite zakazCheeseCordY, configFile, "cooking", "ZakazCheeseY"
+  }
+  loop 3 {
+    MouseClick "left", zakazCheeseCordX, zakazCheeseCordY
+  }
+
+  Sleep sleepTime
+  
+  ; Сливки
+  zakazCreamCordX := IniRead(configFile, "cooking", "ZakazCreamX", false)
+  zakazCreamCordY := IniRead(configFile, "cooking", "ZakazCreamY", false)
+  if (!zakazCreamCordX) {
+    cream := 0
+    while !cream {
+      cream := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "cream.png")
+    }
+    zakazCreamCordX := imgX + 900
+    zakazCreamCordY := imgY + (38 / 2)
+    IniWrite zakazCreamCordX, configFile, "cooking", "ZakazCreamX"
+    IniWrite zakazCreamCordY, configFile, "cooking", "ZakazCreamY"
+  }
+  loop 3 {
+    MouseClick "left", zakazCreamCordX, zakazCreamCordY
+  }
+
+  Sleep sleepTime
+
+  ; Купить
+  buyCordX := IniRead(configFile, "cooking", "BuyX", false)
+  buyCordY := IniRead(configFile, "cooking", "BuyY", false)
+  if (!buyCordX) {
+    buy := 0
+    while !buy {
+      buy := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "buy.png")
+    }
+    buyCordX := imgX + (118 / 2)
+    buyCordY := imgY + (46 / 2)
+    IniWrite buyCordX, configFile, "cooking", "BuyX"
+    IniWrite buyCordY, configFile, "cooking", "BuyY"
+  }
+  MouseClick "left", buyCordX, buyCordY
 
   Sleep sleepTime
 

@@ -83,6 +83,6 @@ if (!scriptVersion) {
   }
 }
 
-Sleep 5000
+Sleep 200
 
 Run scriptDir "/helper.exe"

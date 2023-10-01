@@ -6,6 +6,7 @@ stateGui.Add("Text", "w900 cffffff", "[ALT+F1] Показать/Скрыть")
 stateGui.Add("Text", "w900 cffffff", "[ALT+F2] Приготовить")
 stateGui.Add("Text", "w900 cffffff", "[ALT+F3] АвтоГотовка")
 stateGui.Add("Text", "w900 cffffff", "[ALT+F4] Рыбалка")
+stateGui.Add("Text", "w900 cffffff", "[ALT+F5] Заказ")
 stateGui.Add("Text", "w900 cffffff", "[ALT+F9] Закрыть скрипт")
 
 ; Указываем версию
@@ -15,7 +16,7 @@ stateGui.Opt("+AlwaysOnTop -Caption +ToolWindow +E0x80020")
 stateGui.BackColor := "232323"
 WinSetTransColor("FF00FF" " 120", stateGui)
 WinSetTransparent("120", stateGui)
-stateGui.Show("w170 h170 x150 y150")
+stateGui.Show("w170 h190 x150 y150")
 
 ; Переменные
 hideGui := false
@@ -26,7 +27,7 @@ hideGui := false
 showGui(myGui) {
   global hideGui
   if (hideGui) {
-    myGui.Show("w170 h170 x150 y150")
+    myGui.Show("w170 h190 x150 y150")
     hideGui := false
   } else {
     myGui.Hide()
