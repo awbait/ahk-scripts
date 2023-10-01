@@ -1,29 +1,14 @@
 ; Готовка
 ; При первом запуске ищем по картинкам координаты кнопок и записываем в конфигурационный файл
 
-; Прекомпиляция изображений
-FileInstall("./images/cooking/prigotovlenie.png", "prigotovlenie.png", 1)
-FileInstall("./images/cooking/spaghetti_fanicini.png", "spaghetti_fanicini.png", 1)
-FileInstall("./images/cooking/button_cook_idle.png", "button_cook_idle.png", 1)
-FileInstall("./images/cooking/recipes.png", "recipes.png", 1)
-; Zakaz
-FileInstall("./images/cooking/zakaz.png", "zakaz.png", 1)
-FileInstall("./images/cooking/scroll.png", "scroll.png", 1)
-FileInstall("./images/cooking/carrot.png", "carrot.png", 1)
-FileInstall("./images/cooking/onion.png", "onion.png", 1)
-FileInstall("./images/cooking/spaghetti.png", "spaghetti.png", 1)
-FileInstall("./images/cooking/cheese.png", "cheese.png", 1)
-FileInstall("./images/cooking/cream.png", "cream.png", 1)
-FileInstall("./images/cooking/buy.png", "buy.png", 1)
-
 ; Конфигурационный файл
 configFile := A_AppData "/HelperNextRP/config.ini"
 stateTimerCooking := false
 
 ; Запуск одноразовой готовки
-!F2::spaghettiCooking()
-!F3::AutoSpaghettiCooking(stateTimerCooking)
-!F4::zakupka()
+!F4::spaghettiCooking()
+!F5::zakupka()
+^!F4::AutoSpaghettiCooking(stateTimerCooking)
 
 AutoSpaghettiCooking(sT) {
   global stateTimerCooking
@@ -31,6 +16,7 @@ AutoSpaghettiCooking(sT) {
     SetTimer spaghettiCooking, 0
     SetTimer zakupka, 0
     stateTimerCooking := false
+    activeFunction(neutron, "cooking", false)
   } else {
     spaghettiCooking()
     Sleep 10000
@@ -38,6 +24,7 @@ AutoSpaghettiCooking(sT) {
     SetTimer spaghettiCooking, 16 * 60000
     SetTimer zakupka, 41 * 60000
     stateTimerCooking := true
+    activeFunction(neutron, "cooking", true)
   }
 }
 
