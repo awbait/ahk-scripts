@@ -172,15 +172,20 @@ zakupka() {
   ; Ищем координаты скролла
   zakazScrollCordX := IniRead(configFile, "cooking", "ZakazScrollX", false)
   zakazScrollCordY := IniRead(configFile, "cooking", "ZakazScrollY", false)
+  zakazScrollCordYEnd := IniRead(configFile, "cooking", "ZakazScrollEndY", false)
   if (!zakazScrollCordX) {
     scroll := 0
     while !scroll {
       scroll := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "scroll.png")
     }
+    zakazScrollCordX := imgX + (16 / 2)
+    zakazScrollCordY := imgY + (24 / 2)
+    zakazScrollCordYEnd := zakazScrollCordY + 254
+    IniWrite zakazScrollCordX, configFile, "cooking", "ZakazScrollX"
+    IniWrite zakazScrollCordY, configFile, "cooking", "ZakazScrollY"
+    IniWrite zakazScrollCordYEnd, configFile, "cooking", "ZakazScrollEndY"
   }
-  zakazScrollCordX := imgX + (16 / 2)
-  zakazScrollCordY := imgY + (24 / 2)
-  zakazScrollCordYEnd := zakazScrollCordY + 254
+  
   ; Зажимаем ЛКМ кнопку на скролле и скроллим вниз
   Sleep 1
   SendInput "{Click " zakazScrollCordX " " zakazScrollCordY " Down}"
