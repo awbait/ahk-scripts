@@ -23,7 +23,6 @@ FileInstall("../images/cooking/cheese.png", "cheese.png", 1)
 FileInstall("../images/cooking/cream.png", "cream.png", 1)
 FileInstall("../images/cooking/buy.png", "buy.png", 1)
 
-
 ; libs
 #Include libs\Neutron.ahk
 #Include libs\utils.ahk

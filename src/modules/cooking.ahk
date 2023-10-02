@@ -176,11 +176,11 @@ zakupka() {
   }
   
   ; Зажимаем ЛКМ кнопку на скролле и скроллим вниз
-  Sleep 1
+  Sleep 100
   SendInput "{Click " zakazScrollCordX " " zakazScrollCordY " Down}"
-  Sleep 1
+  Sleep 100
   SendInput "{Click " zakazScrollCordX " " zakazScrollCordYEnd " Up}"
-  Sleep 1
+  Sleep 100
   
   Sleep sleepTime
 
@@ -200,7 +200,7 @@ zakupka() {
   }
   loop 3 {
     MouseClick "left", zakazCarrotCordX, zakazCarrotCordY
-    Sleep 1
+    Sleep 100
   }
 
   Sleep sleepTime
@@ -220,7 +220,7 @@ zakupka() {
   }
   loop 3 {
     MouseClick "left", zakazOnionCordX, zakazOnionCordY
-    Sleep 1
+    Sleep 100
   }
 
   Sleep sleepTime
@@ -240,7 +240,7 @@ zakupka() {
   }
   loop 3 {
     MouseClick "left", zakazSpaghettiCordX, zakazSpaghettiCordY
-    Sleep 1
+    Sleep 100
   }
 
   Sleep sleepTime
@@ -260,7 +260,7 @@ zakupka() {
   }
   loop 3 {
     MouseClick "left", zakazCheeseCordX, zakazCheeseCordY
-    Sleep 1
+    Sleep 100
   }
 
   Sleep sleepTime
@@ -280,7 +280,7 @@ zakupka() {
   }
   loop 3 {
     MouseClick "left", zakazCreamCordX, zakazCreamCordY
-    Sleep 1
+    Sleep 100
   }
 
   Sleep sleepTime
