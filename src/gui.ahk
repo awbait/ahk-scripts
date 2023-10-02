@@ -1,4 +1,5 @@
-neutron := NeutronWindow().Load("index.html")
+neutron := NeutronWindow()
+  .Load("index.html")
 neutron.Opt("+AlwaysOnTop +Caption +ToolWindow +LastFound +E0x80020")
 
 posX := A_ScreenWidth - 180 - 250

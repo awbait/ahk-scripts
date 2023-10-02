@@ -22,7 +22,7 @@ AutoSpaghettiCooking(sT) {
     Sleep 10000
     zakupka()
     SetTimer spaghettiCooking, 16 * 60000
-    SetTimer zakupka, 41 * 60000
+    SetTimer zakupka, 61 * 60000
     stateTimerCooking := true
     activeFunction(neutron, "cooking", true)
   }
