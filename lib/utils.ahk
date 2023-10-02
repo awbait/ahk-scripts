@@ -14,8 +14,8 @@ FileInstall("./images/cooking/cream.png", "cream.png", 1)
 FileInstall("./images/cooking/buy.png", "buy.png", 1)
 
 ; HTML
-FileInstall("./html/index.html", "./html/index.html", 1)
-FileInstall("./html/style.css", "./html/style.css", 1)
+FileInstall("./html/index.html", "index.html", 1)
+FileInstall("./html/style.css", "style.css", 1)
 
 ; Функция добавления класса enable
 activeFunction(neutron, funcId, state) {
