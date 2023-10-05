@@ -13,18 +13,20 @@ stateTimerCooking := false
 AutoSpaghettiCooking(sT) {
   global stateTimerCooking
   if (sT) {
+    BlockInput "MouseMoveOff"
+    activeFunction(neutron, "cooking", false)
     SetTimer spaghettiCooking, 0
     SetTimer zakupka, 0
     stateTimerCooking := false
-    activeFunction(neutron, "cooking", false)
   } else {
+    BlockInput "MouseMove"
+    activeFunction(neutron, "cooking", true)
     spaghettiCooking()
     Sleep 10000
     zakupka()
     SetTimer spaghettiCooking, 16 * 60000
     SetTimer zakupka, 61 * 60000
     stateTimerCooking := true
-    activeFunction(neutron, "cooking", true)
   }
 }
 
@@ -178,7 +180,9 @@ zakupka() {
   ; Зажимаем ЛКМ кнопку на скролле и скроллим вниз
   Sleep 100
   SendInput "{Click " zakazScrollCordX " " zakazScrollCordY " Down}"
-  Sleep 100
+  Sleep 1
+  MouseMove zakazScrollCordX, zakazScrollCordYEnd
+  Sleep 1
   SendInput "{Click " zakazScrollCordX " " zakazScrollCordYEnd " Up}"
   Sleep 100
   
