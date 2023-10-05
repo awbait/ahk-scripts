@@ -2,10 +2,11 @@
 
 #SingleInstance Force
 
-; Интерфейс
-FileInstall("index.html", "*")
-FileInstall("style.css", "*")
-
+if false {
+  ; Интерфейс
+  FileInstall("index.html", "*")
+  FileInstall("style.css", "*")
+}
 ; Прекомпиляция изображений
 FileInstall("../images/cooking/prigotovlenie.png", "prigotovlenie.png", 1)
 FileInstall("../images/cooking/spaghetti_fanicini.png", "spaghetti_fanicini.png", 1)
