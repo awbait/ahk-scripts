@@ -33,3 +33,4 @@ FileInstall("../images/cooking/buy.png", "buy.png", 1)
 #Include modules\fishing.ahk
 #Include modules\cooking.ahk
 #Include modules\close.ahk
+#Include modules\exit_game.ahk

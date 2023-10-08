@@ -5,7 +5,7 @@ neutron.Opt("+AlwaysOnTop +Caption +ToolWindow +LastFound +E0x80020")
 posX := A_ScreenWidth - 180 - 250
 posY := A_ScreenHeight - 180 - 50
 
-stringPosition := "w180 h180 x" posX " y" posY
+stringPosition := "w180 h194 x" posX " y" posY
 
 neutron.Show(stringPosition)
 WinSetTransparent("255", neutron)
