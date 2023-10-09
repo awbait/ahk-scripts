@@ -18,19 +18,19 @@ FileInstall('./libs/WebView2/64bit/WebView2Loader.dll', './libs/WebView2Loader.d
 DirCreate homeDir '/img'
 DirCreate homeDir '/img/cooking'
 FileInstall("../img/cooking/prigotovlenie.png", homeDir "/img/cooking/prigotovlenie.png", 1)
-FileInstall("../images/cooking/spaghetti_fanicini.png", homeDir "/img/cooking/spaghetti_fanicini.png", 1)
-FileInstall("../images/cooking/button_cook_idle.png", homeDir "/img/cooking/button_cook_idle.png", 1)
-FileInstall("../images/cooking/recipes.png", homeDir "/img/cooking/recipes.png", 1)
+FileInstall("../img/cooking/spaghetti_fanicini.png", homeDir "/img/cooking/spaghetti_fanicini.png", 1)
+FileInstall("../img/cooking/button_cook_idle.png", homeDir "/img/cooking/button_cook_idle.png", 1)
+FileInstall("../img/cooking/recipes.png", homeDir "/img/cooking/recipes.png", 1)
 
 ; Zakaz
-FileInstall("../images/cooking/zakaz.png", homeDir "/img/cooking/zakaz.png", 1)
-FileInstall("../images/cooking/scroll.png", homeDir "/img/cooking/scroll.png", 1)
-FileInstall("../images/cooking/carrot.png", homeDir "/img/cooking/carrot.png", 1)
-FileInstall("../images/cooking/onion.png", homeDir "/img/cooking/onion.png", 1)
-FileInstall("../images/cooking/spaghetti.png", homeDir "/img/cooking/spaghetti.png", 1)
-FileInstall("../images/cooking/cheese.png", homeDir "/img/cooking/cheese.png", 1)
-FileInstall("../images/cooking/cream.png", homeDir "/img/cooking/cream.png", 1)
-FileInstall("../images/cooking/buy.png", homeDir "/img/cooking/buy.png", 1)
+FileInstall("../img/cooking/zakaz.png", homeDir "/img/cooking/zakaz.png", 1)
+FileInstall("../img/cooking/scroll.png", homeDir "/img/cooking/scroll.png", 1)
+FileInstall("../img/cooking/carrot.png", homeDir "/img/cooking/carrot.png", 1)
+FileInstall("../img/cooking/onion.png", homeDir "/img/cooking/onion.png", 1)
+FileInstall("../img/cooking/spaghetti.png", homeDir "/img/cooking/spaghetti.png", 1)
+FileInstall("../img/cooking/cheese.png", homeDir "/img/cooking/cheese.png", 1)
+FileInstall("../img/cooking/cream.png", homeDir "/img/cooking/cream.png", 1)
+FileInstall("../img/cooking/buy.png", homeDir "/img/cooking/buy.png", 1)
 
 ; Install bot modules
 #Include gui.ahk
