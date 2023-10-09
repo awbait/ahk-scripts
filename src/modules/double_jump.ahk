@@ -1,20 +1,6 @@
-doubleJumpEnabled := false
-
+; Hotkeys
 !F6::doubleJumpHandle()
 Hotkey("*~$Space", "Off")
-
-doubleJumpHandle() {
-  global doubleJumpEnabled
-  
-  if (doubleJumpEnabled := !doubleJumpEnabled) {
-    Hotkey("*~$Space", "On")
-    activeFunction(neutron, "double_jump", true)
-  } else {
-    Hotkey("*~$Space", "Off")
-    activeFunction(neutron, "double_jump", false)
-  }
-  return
-}
 
 *~$Space::{
   Sleep 5
@@ -27,4 +13,21 @@ doubleJumpHandle() {
     SendInput "{Blind}{Space}"
   }
   Return
+}
+
+; Variables
+doubleJumpEnabled := false
+
+; Functions
+doubleJumpHandle() {
+  global doubleJumpEnabled
+  
+  if (doubleJumpEnabled := !doubleJumpEnabled) {
+    Hotkey("*~$Space", "On")
+    wv.CoreWebView2.ExecuteScript("document.getElementById('double_jump').className += ' enable'", 0)
+  } else {
+    Hotkey("*~$Space", "Off")
+    wv.CoreWebView2.ExecuteScript("document.getElementById('double_jump').classList.remove('enable')", 0)
+  }
+  return
 }

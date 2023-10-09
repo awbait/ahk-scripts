@@ -1,26 +1,23 @@
-; Готовка
-; При первом запуске ищем по картинкам координаты кнопок и записываем в конфигурационный файл
-
-; Конфигурационный файл
-configFile := A_AppData "/HelperNextRP/config.ini"
-stateTimerCooking := false
-
-; Запуск одноразовой готовки
+; Hotkeys
 !F4::spaghettiCooking()
 !F5::zakupka()
 ^!F4::AutoSpaghettiCooking(stateTimerCooking)
 
+; Variables
+stateTimerCooking := false
+
+; Functions
 AutoSpaghettiCooking(sT) {
   global stateTimerCooking
   if (sT) {
     BlockInput "MouseMoveOff"
-    activeFunction(neutron, "cooking", false)
+    wv.CoreWebView2.ExecuteScript("document.getElementById('cooking').classList.remove('enable')", 0)
     SetTimer spaghettiCooking, 0
     SetTimer zakupka, 0
     stateTimerCooking := false
   } else {
     BlockInput "MouseMove"
-    activeFunction(neutron, "cooking", true)
+    wv.CoreWebView2.ExecuteScript("document.getElementById('cooking').className += ' enable'", 0)
     spaghettiCooking()
     Sleep 10000
     zakupka()
@@ -43,7 +40,7 @@ spaghettiCooking() {
 
     preparation := 0
     while !preparation {
-      preparation := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "prigotovlenie.png")
+      preparation := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " homeDir "/img/cooking/prigotovlenie.png")
     }
     prepCordX := imgX + (150 / 2)
     prepCordY := imgY + (31 / 2)
@@ -60,7 +57,7 @@ spaghettiCooking() {
   if (!selectCordX) {
     select := 0
     while !select {
-      select := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "spaghetti_fanicini.png")
+      select := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " homeDir "/img/cooking/spaghetti_fanicini.png")
     }
     selectCordX := imgX + 400
     selectCordY := imgY + (23 / 2)
@@ -77,7 +74,7 @@ spaghettiCooking() {
   if (!cookingCordX) {
     cooking := 0
     while !cooking {
-      cooking := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "button_cook_idle.png")
+      cooking := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " homeDir "/img/cooking/button_cook_idle.png")
     }
     cookingCordX := imgX + (190 / 2)
     cookingCordY := imgY + (44 / 2)
@@ -127,7 +124,7 @@ spaghettiCooking() {
   if (!recipesCordX) {
     recipes := 0
     while !recipes {
-      recipes := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "recipes.png")
+      recipes := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " homeDir "/img/cooking/recipes.png")
     }
     recipesCordX := imgX + (172 / 2)
     recipesCordY := imgY + (29 / 2)
@@ -149,7 +146,7 @@ zakupka() {
 
     zakaz := 0
     while !zakaz {
-      zakaz := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "zakaz.png")
+      zakaz := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " homeDir "/img/cooking/zakaz.png")
     }
     zakazCordX := imgX + (152 / 2)
     zakazCordY := imgY + (24 / 2)
@@ -167,7 +164,7 @@ zakupka() {
   if (!zakazScrollCordX) {
     scroll := 0
     while !scroll {
-      scroll := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "scroll.png")
+      scroll := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " homeDir "/img/cooking/scroll.png")
     }
     zakazScrollCordX := imgX + (16 / 2)
     zakazScrollCordY := imgY + (24 / 2)
@@ -178,13 +175,13 @@ zakupka() {
   }
   
   ; Зажимаем ЛКМ кнопку на скролле и скроллим вниз
-  Sleep 100
+  Sleep 200
   SendInput "{Click " zakazScrollCordX " " zakazScrollCordY " Down}"
-  Sleep 1
+  Sleep 200
   MouseMove zakazScrollCordX, zakazScrollCordYEnd
-  Sleep 1
+  Sleep 200
   SendInput "{Click " zakazScrollCordX " " zakazScrollCordYEnd " Up}"
-  Sleep 100
+  Sleep 200
   
   Sleep sleepTime
 
@@ -195,7 +192,7 @@ zakupka() {
   if (!zakazCarrotCordX) {
     carrot := 0
     while !carrot {
-      carrot := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "carrot.png")
+      carrot := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " homeDir "/img/cooking/carrot.png")
     }
     zakazCarrotCordX := imgX + 900
     zakazCarrotCordY := imgY + (38 / 2)
@@ -215,7 +212,7 @@ zakupka() {
   if (!zakazOnionCordX) {
     onion := 0
     while !onion {
-      onion := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "onion.png")
+      onion := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " homeDir "/img/cooking/onion.png")
     }
     zakazOnionCordX := imgX + 900
     zakazOnionCordY := imgY + (38 / 2)
@@ -235,7 +232,7 @@ zakupka() {
   if (!zakazSpaghettiCordX) {
     spaghetti := 0
     while !spaghetti {
-      spaghetti := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "spaghetti.png")
+      spaghetti := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " homeDir "/img/cooking/spaghetti.png")
     }
     zakazSpaghettiCordX := imgX + 900
     zakazSpaghettiCordY := imgY + (38 / 2)
@@ -255,7 +252,7 @@ zakupka() {
   if (!zakazCheeseCordX) {
     cheese := 0
     while !cheese {
-      cheese := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "cheese.png")
+      cheese := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " homeDir "/img/cooking/cheese.png")
     }
     zakazCheeseCordX := imgX + 900
     zakazCheeseCordY := imgY + (38 / 2)
@@ -275,7 +272,7 @@ zakupka() {
   if (!zakazCreamCordX) {
     cream := 0
     while !cream {
-      cream := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "cream.png")
+      cream := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " homeDir "/img/cooking/cream.png")
     }
     zakazCreamCordX := imgX + 900
     zakazCreamCordY := imgY + (38 / 2)
@@ -295,7 +292,7 @@ zakupka() {
   if (!buyCordX) {
     buy := 0
     while !buy {
-      buy := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "buy.png")
+      buy := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " homeDir "/img/cooking/buy.png")
     }
     buyCordX := imgX + (118 / 2)
     buyCordY := imgY + (46 / 2)
@@ -312,7 +309,7 @@ zakupka() {
   if (!recipesCordX) {
     recipes := 0
     while !recipes {
-      recipes := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " "recipes.png")
+      recipes := ImageSearch(&imgX, &imgY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*10 " homeDir "/img/cooking/recipes.png")
     }
     recipesCordX := imgX + (172 / 2)
     recipesCordY := imgY + (29 / 2)

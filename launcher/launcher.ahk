@@ -15,13 +15,9 @@ if not A_IsAdmin {
 
 ; Проверяет наличие папки в которой будет сохранятся конфигурация скрипта
 ; А так же будет сохранять в себе последнюю версию
-scriptDir := A_AppData "/HelperNextRP"
+scriptDir := A_AppData "/NextHelper"
 if not DirExist(scriptDir)
   DirCreate scriptDir
-
-scriptHTMLDir := A_AppData "/HelperNextRP/html"
-if not DirExist(scriptHTMLDir)
-  DirCreate scriptHTMLDir
 
 ; Проверяет наличие файла конфигурации
 ; Если файл отсутствует - создает его
@@ -49,7 +45,7 @@ if lic <= 0 {
   ; Уведомляем пользователя, что лицензия не активирована.
   A_Clipboard := cryptStrEncrypted
   MsgBox ("Добро пожаловать! Ваш уникальный ключ был скопирован.`n"
-          "Чтобы получить доступ к скриптам, отправьте его разработчику."), "HelperNextRP"
+          "Чтобы получить доступ к скриптам, отправьте его разработчику."), "NextHelper"
   ExitApp
 }
 

@@ -1,17 +1,20 @@
-fishingEnabled := false
-
+; Hotkeys
 ^!F5::fishingHandle()
 
+; Variables
+fishingEnabled := false
+
+; Functions
 fishingHandle() {
   global fishingEnabled
   
   if (fishingEnabled := !fishingEnabled) {
     BlockInput "MouseMove"
-    activeFunction(neutron, "fishing", true)
+    wv.CoreWebView2.ExecuteScript("document.getElementById('fishing').className += ' enable'", 0)
     SetTimer fishing, 300
   } else {
     BlockInput "MouseMoveOff"
-    activeFunction(neutron, "fishing", false)
+    wv.CoreWebView2.ExecuteScript("document.getElementById('fishing').classList.remove('enable')", 0)
     SetTimer fishing, 0
   }
   return
