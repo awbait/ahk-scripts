@@ -4,6 +4,8 @@
 ; Variables
 fishingEnabled := false
 
+SetControlDelay -1
+
 ; Functions
 fishingHandle() {
   global fishingEnabled
@@ -21,10 +23,17 @@ fishingHandle() {
 }
 
 fishing() {
-  MouseClick "Left", 1267, 283
-  Sleep 1
-  MouseClick "Left", 636, 510
-  Sleep 1
-  MouseClick "Left", 968, 844
-  Sleep 1
+  gameTitle := "NEXTRP"
+  uid := WinExist(gameTitle)
+  if uid {
+    ControlClick("x1267 y283", gameTitle,, "Left")
+    ; MouseClick "Left", 1267, 283
+    Sleep 1
+    ControlClick("x636 y510", gameTitle,, "Left")
+    ; MouseClick "Left", 636, 510
+    Sleep 1
+    ControlClick("x968 y844", gameTitle,, "Left")
+    ; MouseClick "Left", 968, 844
+    Sleep 1
+  }
 }
