@@ -41,3 +41,4 @@ FileInstall("../img/cooking/buy.png", homeDir "/img/cooking/buy.png", 1)
 #Include modules\exit_game.ahk
 #Include modules\cooking.ahk
 #Include modules\gather_terr.ahk
+#Include modules\reset.ahk
