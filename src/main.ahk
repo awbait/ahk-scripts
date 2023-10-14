@@ -34,8 +34,10 @@ FileInstall("../img/cooking/buy.png", homeDir "/img/cooking/buy.png", 1)
 
 ; Install bot modules
 #Include gui.ahk
+#Include libs\utils.ahk
 #Include modules\close.ahk
 #Include modules\fishing.ahk
 #Include modules\double_jump.ahk
 #Include modules\exit_game.ahk
 #Include modules\cooking.ahk
+#Include modules\gather_terr.ahk

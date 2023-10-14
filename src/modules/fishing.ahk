@@ -26,14 +26,17 @@ fishing() {
   gameTitle := "NEXTRP"
   uid := WinExist(gameTitle)
   if uid {
-    ControlClick("x1267 y283", gameTitle,, "Left")
-    ; MouseClick "Left", 1267, 283
+    ; ControlClick("x1267 y283", "ahk_class Grand theft auto San Andreas",, "Left",, "Pos")
+    ; ControlClick("x1267 y283", gameTitle,, "Left")
+    MouseClick "Left", 1267, 283
     Sleep 1
-    ControlClick("x636 y510", gameTitle,, "Left")
-    ; MouseClick "Left", 636, 510
+    ; ControlClick("x636 y510", "ahk_class Grand theft auto San Andreas",, "Left",, "Pos")
+    ; ControlClick("x636 y510", gameTitle,, "Left")
+    MouseClick "Left", 636, 510
     Sleep 1
-    ControlClick("x968 y844", gameTitle,, "Left")
-    ; MouseClick "Left", 968, 844
+    ; ControlClick("x968 y844", "ahk_class Grand theft auto San Andreas",, "Left",, "Pos")
+    ; ControlClick("x968 y844", gameTitle,, "Left")
+    MouseClick "Left", 968, 844
     Sleep 1
   }
 }
