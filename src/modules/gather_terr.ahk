@@ -4,11 +4,11 @@
 collectTerritory() {
   /* Нажимаем H */
   Send "{h}"
-  Sleep 100
+  Sleep 500
 
   /* Определение координат поиска кнопки "собрать" */
-  searchWidth := 900
-  searchHeight := 150
+  searchWidth := 400
+  searchHeight := 100
   searchX := (A_ScreenWidth - searchWidth) // 2
   searchY := (A_ScreenHeight // 2) + 200
 
@@ -20,9 +20,8 @@ collectTerritory() {
     return
 
   /* Кнопка собрать найдена - жмем */
-  MouseClick("Left", pixel.px + 10, pixel.py + 10)
+  SendEvent Format("{Click {1} {2}}", pixel.px + 10, pixel.py + 10)
   Sleep 100
-
   /* Закрываем окно сбора */
   Send "{ESC}"
 }
