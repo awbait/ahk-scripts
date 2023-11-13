@@ -20,7 +20,9 @@ collectTerritory() {
     return
 
   /* Кнопка собрать найдена - жмем */
-  SendEvent Format("{Click {1} {2}}", pixel.px + 10, pixel.py + 10)
+  Loop 3 {
+    SendEvent Format("{Click {1} {2}}", pixel.px + 10, pixel.py + 10)
+  }
   Sleep 100
   /* Закрываем окно сбора */
   Send "{ESC}"

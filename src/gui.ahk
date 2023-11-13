@@ -6,7 +6,7 @@ g.Opt("+AlwaysOnTop -Caption +ToolWindow +E0x80020")
 ; Определяем позицию и размеры окна
 posX := A_ScreenWidth - 180 - 250
 posY := A_ScreenHeight - 180 - 90
-stringPosition := Format("w{} h{} x{} y{}", 190, 227, posX, posY)
+stringPosition := Format("w{} h{} x{} y{}", 190, 241, posX, posY)
 
 ; Отобразить интерфейс
 g.Show("NoActivate " stringPosition)

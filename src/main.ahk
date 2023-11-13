@@ -42,3 +42,4 @@ FileInstall("../img/cooking/buy.png", homeDir "/img/cooking/buy.png", 1)
 #Include modules\cooking.ahk
 #Include modules\gather_terr.ahk
 #Include modules\reset.ahk
+#Include modules\vint_aim.ahk

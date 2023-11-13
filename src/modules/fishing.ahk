@@ -28,7 +28,7 @@ fishing() {
   if uid {
     ; ControlClick("x1267 y283", "ahk_class Grand theft auto San Andreas",, "Left",, "Pos")
     ; ControlClick("x1267 y283", gameTitle,, "Left")
-    MouseClick "Left", 1267, 283
+    MouseClick "Left", 1312, 294
     Sleep 1
     ; ControlClick("x636 y510", "ahk_class Grand theft auto San Andreas",, "Left",, "Pos")
     ; ControlClick("x636 y510", gameTitle,, "Left")
